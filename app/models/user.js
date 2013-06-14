@@ -62,6 +62,9 @@ var UserSchema = new Schema({
         type: String,
         trim: true
     },
+    enableStatusShortcuts: {
+        type: Boolean
+    },
 	messages: [{
 		type: Schema.ObjectId,
 		ref: 'Message' 

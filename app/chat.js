@@ -113,6 +113,15 @@ var ChatServer = function (config, server, sessionStore) {
                 });
             });
 
+            client.on('user:update', function(user) {
+                console.log("user:update "+user)
+                if (user.id == userData._id) {
+                    userData.displayName = user.name;
+                    userData.status = user.status,
+                    userData.enableStatusShortcuts = user.enableStatusShortcuts
+                }
+            });
+
             //
             // Message History
             //
@@ -206,6 +215,22 @@ var ChatServer = function (config, server, sessionStore) {
                             lastActive: room.lastActive
                         });
                     });
+
+                    if (userData.enableStatusShortcuts) {
+                        var shortcut = message.text.match(/^(?:status|standup):(.*)/);
+                        if (shortcut) {
+                            var status = shortcut[1].trim()
+                            if (status) {
+                                userData.status = status;
+                                userData.save(function(err, message) {
+                                    if (err) {
+                                        return;
+                                    }
+                                    self.updateUser(userData)
+                                });
+                            }
+                        }
+                    }
                 });
             });
 
@@ -464,8 +489,10 @@ var ChatServer = function (config, server, sessionStore) {
             name: user.displayName,
             avatar: hash.md5(user.email),
             safeName: user.displayName.replace(/\W/g, ''),
-            status: user.status
+            status: user.status,
+            enableStatusShortcuts: user.enableStatusShortcuts
         });
+
     };
 
     this.start = function () {

@@ -144,7 +144,8 @@ var Server = function(config) {
             user_displayname: user.displayName,
             user_lastname: user.lastName,
             user_firstname: user.firstName,
-            user_status: user.status
+            user_status: user.status,
+            user_enable_status_shortcuts: user.enableStatusShortcuts
         }
         res.render('chat.html', vars);
     });
@@ -302,6 +303,8 @@ var Server = function(config) {
                     }
                 });
                 user.status = form['status'];
+                user.enableStatusShortcuts = form['enable-status-shortcuts'];
+
                 user.save(function(err) {
                     if (err) {
                         res.send({

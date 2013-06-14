@@ -91,7 +91,10 @@
                 <div class="control-group">
                     <label class="control-label">Status</label>
                     <div class="controls">
-                        <textarea name="status">{{ user_status }}</textarea>
+                        <textarea name="status">{{ user_status }}</textarea><br/>
+                        <input type="checkbox" name="enable-status-shortcuts" id="enable-status-shortcuts" {% if user_enable_status_shortcuts %} checked {% endif %}/>
+                        <label for="enable-status-shortcuts">Enable status change by saying<br/>
+                        "status: ..." or "standup: ..."</label>
                     </div>
                 </div>
                 <p class="alert response"></p>
