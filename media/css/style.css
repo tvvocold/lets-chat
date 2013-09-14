@@ -109,6 +109,7 @@ img {
 button,
 input,
 select,
+canvas,
 textarea {
   margin: 0;
   font-size: 100%;
@@ -151,7 +152,8 @@ input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
-textarea {
+textarea,
+canvas {
   overflow: auto;
   vertical-align: top;
 }
@@ -886,6 +888,7 @@ label,
 input,
 button,
 select,
+canvas,
 textarea {
   font-size: 14px;
   font-weight: normal;
@@ -894,6 +897,7 @@ textarea {
 input,
 button,
 select,
+canvas,
 textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -902,6 +906,7 @@ label {
   margin-bottom: 5px;
 }
 select,
+canvas,
 textarea,
 input[type="text"],
 input[type="password"],
@@ -931,14 +936,18 @@ input[type="color"],
   vertical-align: middle;
 }
 input,
+canvas,
 textarea,
 .uneditable-input {
   width: 206px;
 }
+canvas,
 textarea {
   height: auto;
 }
+canvas,
 textarea,
+canvas,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -964,6 +973,7 @@ input[type="color"],
   -o-transition: border linear .2s, box-shadow linear .2s;
   transition: border linear .2s, box-shadow linear .2s;
 }
+canvas:focus,
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -1055,14 +1065,17 @@ input[type="checkbox"]:focus {
   height: auto;
 }
 input:-moz-placeholder,
+canvas:-moz-placeholder,
 textarea:-moz-placeholder {
   color: #999999;
 }
 input:-ms-input-placeholder,
+canvas:-ms-placeholder,
 textarea:-ms-input-placeholder {
   color: #999999;
 }
 input::-webkit-input-placeholder,
+canvas:-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   color: #999999;
 }
@@ -5387,6 +5400,7 @@ body,
 li {
   line-height: 18px;
 }
+canvas,
 textarea {
   outline: none;
   -webkit-box-sizing: border-box;
@@ -5851,6 +5865,7 @@ header .user .dropdown-menu a:hover {
   -moz-box-align: stretch;
   -moz-box-pack: left;
 }
+.chat .entry canvas,
 .chat .entry textarea {
   box-flex: 1;
   -webkit-box-flex: 1;
@@ -5871,6 +5886,10 @@ header .user .dropdown-menu a:hover {
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
+}
+.entry canvas {
+	min-width: 600px;
+	min-height: 100px;
 }
 .entry textarea {
   min-height: 70px;
@@ -6229,4 +6248,35 @@ header .user .dropdown-menu a:hover {
 .page-transcript .transcript-date {
   color: #777;
   font-style: italic;
+}
+
+/**************************
+	Handwriting ToolBar
+**************************/
+.handwritingToolbar {
+	display:block;
+	padding:5px;
+	margin:5px;
+	background-color: #f6f6f6;
+	background-image: -moz-linear-gradient(top, #ffffff, #e9e9e9);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e9e9e9));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e9e9e9);
+	background-image: -o-linear-gradient(top, #ffffff, #e9e9e9);
+	background-image: linear-gradient(to bottom, #ffffff, #e9e9e9);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe9e9e9', GradientType=0);
+	border-top: 1px #ddd solid;
+	border-bottom: 1px #eee solid;
+}
+.handwritingToolbar select,
+.handwritingToolbar button{
+	height: 32px;
+	display: inline-block;
+	margin: 0px;
+}
+.handwritingToolbar div{
+	display: inline-block;
+}
+.handwritingIcons {
+	height:18px;
 }

@@ -64,8 +64,28 @@
                 <ul class="messages file-drop-zone"></ul>
                 <div class="entry file-drop-zone">
                     <textarea type="text" name="talk" class="file-paste-zone"></textarea>
+					<canvas style="background:#FFFFFF; display:none;" id="myCanvas"></canvas>
                     <div class="buttons">
                         <button class="send btn btn-info">Send</button>
+						<button class="btn btn-info"  onclick="toggleWriteAndDraw()">
+							<img id="handwritingIconDraw" src="media/img/glyphicons_brush_w.png" class="handwritingIcons"></img>
+							<img id="handwritingIconType" style="display:none;" src="media/img/glyphicons_keyboard_w.png" class="handwritingIcons"></img>
+						</button>
+						<div id='handwritingToolbar' class="handwritingToolbar" style="display:none;">
+							<select id="brushSize" style="width:60px;">
+								<option selected value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<div id='brushColorHolder'>
+								<input type='color' name='brushColor' id='brushColor' value='#000000'/>
+							</div>
+							<button id="clearCanvasBtn" class="btn btn-info" onclick="clearStageCanvas()">
+								<img src="media/img/glyphicons_clean_w.png" class="handwritingIcons"></img>
+							</button>
+						</div>
                     </div>
                 </div>
             </div><!-- chat end -->

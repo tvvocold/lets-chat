@@ -447,12 +447,22 @@ var RoomView = Backbone.View.extend({
     sendMessage: function(e) {
         if (e.type === 'keypress' && e.keyCode !== 13 || e.altKey) return;
         e.preventDefault();
+		var $canvas = this.$('.entry canvas');
         var $textarea = this.$('.entry textarea');
+		var data;
+
+		if ($canvas.css('display') != 'none') {
+			data = getStageImageData();
+		} else {
+			data = $textarea.val();
+		}
+
         this.notifications.trigger('newmessage', {
             room: this.model.id,
-            text: $.trim($textarea.val())
+            text: $.trim(data)
         });
         $textarea.val('');
+		clearStageCanvas();
     },
     showEditRoom: function(e) {
         var self = this;

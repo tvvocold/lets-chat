@@ -15,9 +15,13 @@ if (typeof exports !== 'undefined') {
         // TODO: Fix these regexes
         var imagePattern = /((https?|ftp):\/\/[^\s\/$.?#].[^\s]*[.](jpe?g|png|gif)\s*$)/gi;
         var linkPattern = /((https?|ftp):\/\/[^\s\/$.?#].[^\s]*[^.])/gi;
+		var drawPattern = /data:image\/png;base64.*/gi
+
         if (text.match(imagePattern)) {
             text = text.replace(imagePattern, '<a class="thumbnail" href="$1" target="_blank"><img src="$1" alt="$1" /></a>');
-        } else {
+        } else if (text.match(drawPattern)) {
+			text = '<a class="thumbnail" href=' + text + ' target="_blank"><img src=' + text + ' alt="drawing" /></a>';
+		} else {
             text = text.replace(linkPattern, '<a href="$1" target="_blank">$1</a>');
         }
         if (plugins) {
