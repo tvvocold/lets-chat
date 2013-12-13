@@ -1,10 +1,8 @@
 $(function() {
-
 	// Toggle forms
 	$('.show-form').on('click', function(e) {
 		e.preventDefault();
-		$('.well[id$=form]').each(function() {
-			$(this).find('input').qtip('destroy');
+		$('.well-section[id$=form]').each(function() {
             $(this).hide();
 		});
         $($(this).data('target')).show();

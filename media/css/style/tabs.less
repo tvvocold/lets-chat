@@ -36,13 +36,14 @@
             border-bottom: none;
             display: block;
             position: relative;
-            .border-radius(4px 4px 0 0);
-            .opacity(60);
+            border-radius: 4px 4px 0 0;
+            .box-sizing(content-box);
+            .opacity(.6);
             &:hover {
                 text-decoration: none;
-                .opacity(100);
+                .opacity(1);
                 .close {
-                    .opacity(100);
+                    .opacity(1);
                 }
             }
         }
@@ -59,6 +60,7 @@
             height: 30px;
             line-height: 30px;
             color: #aaa;
+            text-shadow: none;
             font-weight: normal;
             position: absolute;
             top: 0;
@@ -71,19 +73,20 @@
         z-index: 999;
         padding-bottom: 2px;
         margin-bottom: -2px;
-        .border-radius(5px 5px 0 0);
+        border-radius: 5px 5px 0 0;
     }
     .selected a {
         position: relative;
         z-index: 999;
         .box-shadow(0 0 5px #222);
-        .opacity(100);
+        .opacity(1);
     }
     .badge {
+        background-color: #b94a48;
         padding: 1px 7px;
         position: absolute;
         top: 7px;
         right: 6px;
-        .border-radius(7px);
+        border-radius: 7px;
     }
 }

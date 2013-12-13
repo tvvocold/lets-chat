@@ -6,8 +6,9 @@ var TranscriptView = Backbone.View.extend({
     events: {
         'change .mentioned-filter input': 'toggleMentionFilter'
     },
-    initialize: function() {
+    initialize: function(options) {
         var self = this;
+        this.options = options;
         //
         // Models
         //
@@ -35,7 +36,7 @@ var TranscriptView = Backbone.View.extend({
         //
         // Populate messages
         //
-        _.each(this.options.messages.reverse(), function(message) {
+        _.each(options.messages.reverse(), function(message) {
             self.messages.add(message);
         });
     },

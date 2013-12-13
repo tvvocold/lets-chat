@@ -2,6 +2,10 @@
  * Base
  *********************/
 
+html {
+    height: 100%;
+}
+
 body {
     .bg-dark;
 }
@@ -12,13 +16,13 @@ body, li {
 
 textarea {
     outline: none;
-    .box-sizing(border-box);
 }
 
 header {
     background: #222 url('../img/header.png');
     border-bottom: 1px #000 solid;
     height: 42px;
+    .box-sizing(content-box);
     .clearfix;
     .user {
         background: #222 url('../img/header.png');
@@ -28,7 +32,6 @@ header {
         float: right;
         border-left: 1px #111 solid;
         position: relative;
-        .box-sizing(border-box);
         &:active {
             background: #222;
         }
@@ -99,17 +102,6 @@ header {
     }
 }
 
-.modal-body {
-    textarea {
-        .size(100px, 220px);
-    }
-    .response {
-        text-align: center;
-        display: none;
-        margin-bottom: 0;
-    }
-}
-
 .avatar {
-    .border-radius(100%);
+    border-radius: 100%;
 }

@@ -1,4 +1,16 @@
 //
+// Backbone 1.1 legacy options shim
+//
+Backbone.View = (function(View) {
+   return View.extend({
+        constructor: function(options) {
+            this.options = options || {};
+            View.apply(this, arguments);
+        }
+    });
+})(Backbone.View);
+
+//
 // Roomlist
 //
 var RoomListView = Backbone.View.extend({
@@ -469,18 +481,12 @@ var RoomView = Backbone.View.extend({
         if (e) {
             e.preventDefault();
         }
-        this.$('.modal-backdrop').fadeIn(100).one('click', function() {
-            self.hideEditRoom(e);
-        });
-        this.$('.edit-room').modal({
-            backdrop: false
-        });
+        this.$('.edit-room').modal();
     },
     hideEditRoom: function(e) {
         if (e) {
             e.preventDefault();
         }
-        this.$('.modal-backdrop').fadeOut(200);
         this.$('.edit-room').modal('hide');
     },
     submitEditRoom: function(e) {
@@ -829,7 +835,7 @@ var ExperimentalFeaturesView = Backbone.View.extend({
 //
 var ClientView = Backbone.View.extend({
     el: '#client',
-    initialize: function() {
+    initialize: function(options) {
         var self = this;
         //
         // Vars
@@ -866,7 +872,7 @@ var ClientView = Backbone.View.extend({
             self.$('.connection-status')
                 .removeClass('disconnected')
                 .addClass('connected')
-                .html('<i class="icon-signal"></i>  connected');
+                .html('<i class="icon-refresh"></i>  connected');
         });
         this.notifications.on('disconnect', function() {
             self.$('.connection-status')
