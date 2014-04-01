@@ -3,9 +3,7 @@
  *********************/
 @font-face {
   font-family: 'Pacifico';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../font/pacifico.woff') format('woff');
+  src: url('../font/speed.ttf');
 }
 /*!
  * Bootstrap v3.0.0
