@@ -4,7 +4,7 @@
 # See defaults.yml for all available options
 #
 
-env: development # development / production
+env: production
 
 http:
   enable: true
@@ -41,7 +41,7 @@ auth:
 
   local:
     enableRegistration: true
-    salt: secretsauce # Required when upgrading from version < 0.3
+    salt: secretsauce123 # Required when upgrading from version < 0.3
 
   kerberos:
     realm: example.com
